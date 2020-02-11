@@ -264,7 +264,6 @@ jobs:
         # used to load the output into the KinD cluster. Set `DOCKER_HOST` for
         # a single command, and `docker save` the container from the Packet
         # host.
-        i=0
         for image in proxy controller web cni-plugin debug grafana; do
           kind load image-archive <(DOCKER_HOST=ssh://linkerd-docker docker save "$DOCKER_REGISTRY/$image:$TAG") || tee load_fail &
         done
